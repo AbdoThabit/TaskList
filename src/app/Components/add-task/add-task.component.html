@@ -1,0 +1,59 @@
+<div class="container my-3">
+  <form (ngSubmit)="AddTask()" class="p-4 border rounded bg-light">
+    <div class="mb-3">
+      <label for="title" class="form-label">Title:</label>
+      <input
+        type="text"
+        id="title"
+        class="form-control"
+        [(ngModel)]="taskDto.title"
+        name="title"
+        required
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label">Description:</label>
+      <textarea
+        id="description"
+        class="form-control"
+        [(ngModel)]="taskDto.description"
+        name="description"
+        required
+      ></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="type" class="form-label">Type:</label>
+      <input
+        type="text"
+        id="type"
+        class="form-control"
+        [(ngModel)]="taskDto.type"
+        name="type"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="type" class="form-label">Date:</label>
+      <input
+        type="date"
+        id="date"
+        class="form-control"
+        [(ngModel)]="taskDto.created"
+        name="date"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="type" class="form-label">UserID:</label>
+      <input
+        type="text"
+        id="type"
+        class="form-control"
+        [(ngModel)]="taskDto.userId"
+        name="userId"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Add Task</button>
+  </form>
+</div>
