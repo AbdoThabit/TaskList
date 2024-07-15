@@ -1,0 +1,28 @@
+<div class="container my-3">
+  <form class="p-4 border rounded bg-light" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="title" class="form-label">Email:</label>
+      <input
+        type="text"
+        id="email"
+        class="form-control"
+        [(ngModel)]="LoginDto.Email"
+        name="email"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="title" class="form-label">Password:</label>
+      <input
+        type="password"
+        id="Password"
+        class="form-control"
+        [(ngModel)]="LoginDto.PassWord"
+        name="Password"
+        required
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Login</button>
+  </form>
+</div>

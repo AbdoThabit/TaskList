@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IUpdateTaskDto } from 'src/app/Models/iupdate-task-dto';
 import { TaskService } from 'src/app/Services/task.service';
 
@@ -11,7 +11,8 @@ import { TaskService } from 'src/app/Services/task.service';
 export class UpdateTaskComponent implements OnInit {
   constructor(
     private taskService: TaskService,
-    private activedRoute: ActivatedRoute
+    private activedRoute: ActivatedRoute,
+    private router: Router
   ) {}
   taskId: number = 0;
   upateTaskDto: IUpdateTaskDto = {
@@ -36,5 +37,6 @@ export class UpdateTaskComponent implements OnInit {
     this.taskService
       .updateTask(this.taskId, this.upateTaskDto)
       .subscribe((t) => console.log(t));
+    this.router.navigateByUrl('/tasks');
   }
 }

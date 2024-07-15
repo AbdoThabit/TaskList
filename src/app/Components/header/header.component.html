@@ -13,16 +13,15 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" routerLink="/tasks"
-        >Home <span class="sr-only">(current)</span></a
-      >
       <a class="nav-item nav-link" routerLink="/addTask">Add Task</a>
-      <!-- <a class="nav-item nav-link" routerLink="/">products</a
-      ><a class="nav-item nav-link" routerLink="/addproduct">Add Product</a>
-      <a class="nav-item nav-link" routerLink="/quotes">Quotes</a>
-      <a class="nav-item nav-link" routerLink="/about">About</a> -->
 
-      <a class="nav-item nav-link disabled" href="#">Disabled</a>
+      <ng-container *ngIf="alreadyLoggedIn(); else loggedOut">
+        <a class="nav-item nav-link" (click)="logout()">Logout</a>
+      </ng-container>
+      <ng-template #loggedOut>
+        <a class="nav-item nav-link" routerLink="/registration">Registration</a>
+        <a class="nav-item nav-link" routerLink="/login">Login</a>
+      </ng-template>
     </div>
   </div>
 </nav>
