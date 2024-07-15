@@ -3,5 +3,4 @@ export interface ITaskDto {
   description: string;
   type: string;
   created: Date;
-  userId: string;
 }

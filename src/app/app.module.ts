@@ -9,8 +9,11 @@ import { HeaderComponent } from './Components/header/header.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { TaskDetailsComponent } from './Components/task-details/task-details.component';
 import { AddTaskComponent } from './Components/add-task/add-task.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UpdateTaskComponent } from './Components/update-task/update-task.component';
+import { RegisterationComponent } from './Components/registeration/registeration.component';
+import { LoginComponent } from './components/login/login.component';
+import { UserTasksComponent } from './Components/user-tasks/user-tasks.component';
 
 @NgModule({
   declarations: [
@@ -21,8 +24,17 @@ import { UpdateTaskComponent } from './Components/update-task/update-task.compon
     TaskDetailsComponent,
     AddTaskComponent,
     UpdateTaskComponent,
+    RegisterationComponent,
+    LoginComponent,
+    UserTasksComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

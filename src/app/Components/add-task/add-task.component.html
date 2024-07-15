@@ -25,13 +25,15 @@
 
     <div class="mb-3">
       <label for="type" class="form-label">Type:</label>
-      <input
-        type="text"
+      <select
         id="type"
         class="form-control"
         [(ngModel)]="taskDto.type"
         name="type"
-      />
+      >
+        <option value="Urgent">Urgent</option>
+        <option value="Important">Important</option>
+      </select>
     </div>
     <div class="mb-3">
       <label for="type" class="form-label">Date:</label>
@@ -44,7 +46,7 @@
       />
     </div>
 
-    <div class="mb-3">
+    <!-- <div class="mb-3">
       <label for="type" class="form-label">UserID:</label>
       <input
         type="text"
@@ -53,7 +55,7 @@
         [(ngModel)]="taskDto.userId"
         name="userId"
       />
-    </div>
+    </div> -->
     <button type="submit" class="btn btn-primary">Add Task</button>
   </form>
 </div>

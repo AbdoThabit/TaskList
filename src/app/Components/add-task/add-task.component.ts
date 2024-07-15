@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ITaskDto } from 'src/app/Models/ItaskDto';
 import { TaskService } from 'src/app/Services/task.service';
 
@@ -13,13 +14,14 @@ export class AddTaskComponent {
     description: '',
     type: '',
     created: new Date(),
-    userId: '', // Example user ID, replace with actual value
+    // userId: '', // Example user ID, replace with actual value
   };
-  constructor(private taskService: TaskService) {}
+  constructor(private taskService: TaskService, private router: Router) {}
 
   AddTask() {
     this.taskService
       .AddTask(this.taskDto)
       .subscribe((result) => console.log(result));
+    this.router.navigateByUrl('/userTasks');
   }
 }

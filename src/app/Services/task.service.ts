@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ITaskDto } from '../Models/ItaskDto';
@@ -12,21 +12,64 @@ export class TaskService {
 
   constructor(private http: HttpClient) {}
   getAllTasks(): Observable<any> {
-    return this.http.get(`${this.url}/GetAllTasks`);
+    const token = localStorage.getItem('jwtToken');
+    let headers = new HttpHeaders();
+
+    if (token) {
+      headers = headers.set('Authorization', `Bearer ${token}`);
+    }
+
+    return this.http.get(`${this.url}/GetAllTasks`, { headers });
+  }
+  getUserTasks(): Observable<any> {
+    const token = localStorage.getItem('jwtToken');
+    let headers = new HttpHeaders();
+
+    if (token) {
+      headers = headers.set('Authorization', `Bearer ${token}`);
+    }
+
+    return this.http.get(`${this.url}/GetUserTasks`, { headers });
   }
   GetTaskById(taskId: number): Observable<any> {
-    return this.http.get(`${this.url}/GetById?taskId=${taskId}`);
+    const token = localStorage.getItem('jwtToken');
+    let headers = new HttpHeaders();
+
+    if (token) {
+      headers = headers.set('Authorization', `Bearer ${token}`);
+    }
+    return this.http.get(`${this.url}/GetById?taskId=${taskId}`, { headers });
   }
   AddTask(taskDto: ITaskDto): Observable<any> {
-    return this.http.post(`${this.url}/CreateTask`, taskDto);
+    const token = localStorage.getItem('jwtToken');
+    let headers = new HttpHeaders();
+
+    if (token) {
+      headers = headers.set('Authorization', `Bearer ${token}`);
+    }
+
+    return this.http.post(`${this.url}/CreateTask`, taskDto, { headers });
   }
   updateTask(taskId: number, updateTaskDto: IUpdateTaskDto) {
+    const token = localStorage.getItem('jwtToken');
+    let headers = new HttpHeaders();
+
+    if (token) {
+      headers = headers.set('Authorization', `Bearer ${token}`);
+    }
     return this.http.post(
       `${this.url}/UpdateTask?taskId=${taskId}`,
-      updateTaskDto
+      updateTaskDto,
+      { headers }
     );
   }
   deleteTask(id: number) {
-    return this.http.delete(`${this.url}/DeleteTask?taskId=${id}`);
+    const token = localStorage.getItem('jwtToken');
+    let headers = new HttpHeaders();
+
+    if (token) {
+      headers = headers.set('Authorization', `Bearer ${token}`);
+    }
+    return this.http.delete(`${this.url}/DeleteTask?taskId=${id}`, { headers });
   }
 }
